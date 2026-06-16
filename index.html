@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>李 英愛 様｜morich キャリアご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E60012;
+    --red-light: #fff0f0;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f5f5f5; color: var(--gray-900); line-height: 1.75; }
+  header { background: #fff; border-bottom: 3px solid var(--red); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  header img { height: 38px; }
+  header .htxt p:first-child { font-size: 12px; color: var(--gray-500); }
+  header .htxt p:last-child { font-size: 17px; font-weight: 900; }
+  .nav-bar { background: var(--gray-900); padding: 0 12px; overflow-x: auto; white-space: nowrap; }
+  .nav-bar a { display: inline-block; padding: 13px 18px; color: #ccc; text-decoration: none; font-size: 12px; font-weight: 700; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav-bar a:hover { color: #fff; border-bottom-color: var(--red); }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 14px 64px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 40px; overflow: hidden; border-top: 5px solid var(--red); }
+  .card-inner { padding: 28px 28px 36px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 2px solid var(--red); color: var(--red); background: var(--red-light); }
+  .badge-blue { border-color: var(--blue-600); color: var(--blue-600); background: var(--blue-50); }
+  .co-name { font-size: clamp(22px, 5vw, 34px); font-weight: 900; line-height: 1.2; margin-bottom: 5px; }
+  .co-url { font-size: 12px; margin-bottom: 22px; }
+  .co-url a { color: var(--blue-600); text-decoration: none; }
+  .co-url a:hover { text-decoration: underline; }
+  .overview { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .overview h3 { font-size: 10px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .overview table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .overview tr { border-bottom: 1px solid var(--blue-100); }
+  .overview tr:last-child { border-bottom: none; }
+  .overview th { text-align: left; padding: 6px 14px 6px 0; color: var(--gray-600); font-weight: 700; width: 100px; vertical-align: top; white-space: nowrap; }
+  .overview td { padding: 6px 0; color: var(--gray-700); }
+  .highlight { background: var(--red-light); border: 2px solid var(--red); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .highlight h3 { font-size: 13px; font-weight: 900; color: var(--red); margin-bottom: 8px; }
+  .highlight p, .highlight li { font-size: 13px; color: #7a0000; margin-bottom: 4px; }
+  .highlight ul { padding-left: 16px; }
+  .accordion { margin-bottom: 16px; }
+  .acc-header { display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; padding: 12px 16px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; user-select: none; transition: background 0.15s; }
+  .acc-header:hover { background: var(--gray-100); }
+  .acc-header .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--red); border-left: 3px solid var(--red); padding-left: 8px; margin-bottom: 5px; display: block; }
+  .acc-preview { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+  .acc-header-left { flex: 1; }
+  .acc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gray-200); font-size: 13px; transition: transform 0.25s, background 0.2s; }
+  .acc-header.open .acc-icon { transform: rotate(180deg); background: var(--red); color: #fff; }
+  .acc-header.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+  .acc-body { display: none; padding: 20px 18px; border: 1px solid var(--gray-200); border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .acc-body.open { display: block; }
+  .acc-body p { margin-bottom: 10px; }
+  .acc-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .acc-body li { margin-bottom: 6px; }
+  .job-wrap { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .job-header { background: var(--gray-900); color: #fff; padding: 14px 18px; display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; user-select: none; }
+  .job-title-text { font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+  .job-preview { font-size: 11px; color: #aaa; line-height: 1.5; }
+  .job-icon { width: 26px; height: 26px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.15); font-size: 12px; transition: transform 0.25s; }
+  .job-header.open .job-icon { transform: rotate(180deg); }
+  .job-body { display: none; padding: 20px 18px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .job-body.open { display: block; }
+  .job-body p { margin-bottom: 10px; }
+  .job-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .job-body li { margin-bottom: 6px; }
+  .job-section { font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 6px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 8px; }
+  .tag-must { background: var(--red); color: #fff; }
+  .tag-want { background: var(--gray-600); color: #fff; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .pill { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; border-left: 3px solid var(--red); padding-left: 8px; margin: 22px 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lbtn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 6px; background: var(--gray-900); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .lbtn:hover { background: var(--red); }
+  .lbtn-out { background: transparent; color: var(--gray-900); border: 2px solid var(--gray-200); }
+  .lbtn-out:hover { background: var(--gray-900); color: #fff; border-color: var(--gray-900); }
+  footer { text-align: center; padding: 28px 16px; font-size: 11px; color: var(--gray-500); border-top: 1px solid var(--gray-200); background: #fff; }
+  @media(max-width:600px){ .card-inner{ padding: 18px 14px 24px; } .overview th { width: 80px; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="morich_logo.jpg" alt="morich">
+  <div class="htxt">
+    <p>morich キャリアご提案資料</p>
+    <p>李 英愛 様</p>
+  </div>
+</header>
+<nav class="nav-bar">
+  <a href="#k1">1. アスエネ株式会社</a>
+</nav>
+<main>
+
+<div class="card" id="k1"><div class="card-inner">
+  <div class="badges"><span class="badge">APAC事業開発 シニアマネージャー／マネージャー</span><span class="badge badge-blue">未上場</span></div>
+  <div class="co-name">アスエネ株式会社</div>
+  <div class="co-url"><a href="https://corp.asuene.com/company" target="_blank">https://corp.asuene.com/company</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都港区虎ノ門一丁目3番1号 東京虎ノ門グローバルスクエア6階</td></tr><tr><th>設立</th><td>2019年</td></tr><tr><th>従業員数</th><td>正社員280名、業務委託含め400名超</td></tr><tr><th>上場区分</th><td>未上場（IPO準備中）</td></tr><tr><th>資金調達</th><td>累計115億円（シリーズC2）</td></tr><tr><th>拠点</th><td>日本・シンガポール・ロサンゼルス・ロンドン・バンコク・セブ（6ヶ国）</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li><strong>圧倒的な成長資金と財務基盤：</strong>累計資金調達額は115億円に上り、米国展開を加速させています。スタートアップながらメガバンク（SMBC）のプロダクトを事業承継するなど、異例かつ規模の大きなM&Aも成功させています。</li><li><strong>グローバルな事業展開：</strong>現在、日本を含めて6カ国（東京、シンガポール、ロサンゼルス、ロンドン、バンコク、セブ）に現地拠点を持ち、事業を拡大しています。</li><li><strong>市場No.1の実績と優位性：</strong>主力サービス「ASUENE」は3年連続導入社数No.1、「ASUENE SUPPLY CHAIN（旧ASUENE ESG）」も2年連続No.1を獲得しており、業界内での地位を確立しています。</li><li><strong>ハイクラス人材が集う組織：</strong>正社員280名、業務委託を含め400名超の組織体制です。現在、事業部やコーポレート部門、CEO直下の新規事業などでマネージャー以上のハイクラス人材を積極採用しており、優秀なメンバーと切磋琢磨できる環境です。</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">「次世代によりよい世界を」をミッションに2019年に創業した、気候変動問題解決に取り組むクライメートテック企業です。CO2排出量見える化・削減・報告クラウドサービス「ASUENE」をはじめ、脱炭素・ESG領域のマルチプロダクトを提供し、企業のサステナビリティ経営をワンストップで支援しています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>「次世代によりよい世界を」をミッションに2019年に創業した、気候変動問題解決に取り組むクライメートテック企業です。CO2排出量見える化・削減・報告クラウドサービス「ASUENE」、サプライチェーンマネジメントクラウドサービス「ASUENE SUPPLY CHAIN」、GX・ESG人材特化型転職プラットフォーム「ASUENE CAREER」、非財務データの第三者保証事業「ASUENE VERITAS」、カーボンクレジット取引所「Carbon EX」など脱炭素・ESG領域のマルチプロダクトを提供し、企業のサステナビリティ経営をワンストップで支援しています。</p><p>実績は圧倒的で、「ASUENE」は導入社数3年連続No.1、ESG評価クラウドも2年連続No.1を獲得しており、累計資金調達額は115億円に達しています。また、三井住友銀行の事業を買収・統合するなどこれまでに6社のM&Aを実施し、成長戦略の中核としています。現在は日本・米国・シンガポール・ロンドンなど世界6ヶ国に拠点を持ち、グローバル展開を加速させています。</p><p>米誌の「2025 World's Top GreenTech Companies」に、日本のCO2排出量見える化クラウド企業で唯一選出されるなど、世界的な評価も高い成長企業です。</p><ul><li>6ヶ国に展開（Tokyo / Singapore / Los Angeles / London / Bangkok / Cebu）</li><li>名古屋拠点（2026年7月1日開設予定）</li></ul><p><strong>Founder 代表取締役CEO　西和田 浩平 氏</strong><br>慶應義塾大学卒業、三井物産にて日本・欧州・中南米の再生可能エネルギーの新規事業投資・M&Aを担当。ブラジル海外赴任中に分散型電源企業に出向、海外のM&A・PMI・事業投資・新規事業などを経験。Forbes Japan Rising Star Award受賞、Forbes Japan 100選出など多数のアワードを受賞。2025年12月に初の著書「『世界で勝てるGX』脱炭素資本主義が動かす、再エネ×AI主導の21世紀の産業革命」を出版。</p><p>IPOできる体制は整えていますが、大型IPOを狙い市況を見ながら上場タイミングを見計らっています。規制・ルールメイクが厳しい欧州・米国に進出しいち早く反映していることも、優位性の一つです。時価総額一兆円に向かって事業急拡大中です。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 【APAC事業開発】シニアマネージャー／マネージャー</div>
+          <div class="job-preview">APACエリア（オーストラリア・シンガポール・マレーシア・インドネシア等）の事業拡大を最前線で牽引するポジション。市場調査から拠点立ち上げ、M&A支援まで幅広く担う。</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>【募集背景】</strong><br>アスエネは現在、APACリージョン（オーストラリア・シンガポール・マレーシア・インドネシア等）における事業展開を急速に加速させています。既存拠点のグロースと新規拠点立ち上げを同時に進めるフェーズにあり、戦略的に海外事業の成長をリードできる人材が急務となっています。</p><p><strong>【組織構成】</strong><br>レポートライン：CEO<br>連携部署：CEO、CFO、ASUENE APAC、M&A専任チーム、コーポレート部門</p><p><strong>【本ポジションについて】</strong><br>APACエリアの事業拡大を最前線で牽引することをミッションとするポジションです。市場調査・拠点立ち上げ・事業計画策定から、現地チームの営業支援・組織設計・採用戦略まで、事業開発における上流から下流まで幅広く担っていただきます。M&Aや戦略的パートナーシップへの関与も視野に入れており、アスエネのグローバル成長を直接担う、影響力の大きいポジションです。<br>（入社から1年を目処にオーストラリア等のAPAC地域への駐在の可能性があります。）</p><p><strong>【入社後すぐに担う業務】</strong></p><p>■市場調査・事業機会の特定</p><ul><li>APACにおける競合・規制・顧客動向の調査・分析</li><li>新規参入国・事業領域の優先度付けと経営への提言</li></ul><p>■拠点立ち上げ推進</p><ul><li>新規拠点の設立プロセス全体の企画・調整（法務・コーポレート・オペレーション連携含む）</li><li>立ち上げロードマップの策定と各ステークホルダーとの進捗管理</li></ul><p>■事業計画策定・予実管理・経営レポーティング</p><ul><li>APAC全体の中長期事業計画（3〜5年）および年度計画の策定</li><li>予算編成、月次・四半期の予実管理、KPI設計と着地見込み精度の管理</li><li>経営層（CEO・CFO・取締役会）への定期レポーティング資料の作成・報告</li></ul><p>■海外拠点の販売促進・オペレーション支援</p><ul><li>各拠点の営業活動のオペレーション型化（プロセス標準化、SOP整備）やハンズオン支援</li><li>新規顧客開拓およびパートナーシップ構築（現地企業・代理店・アライアンス先など）</li><li>新規プロダクトのAPAC地域における立ち上げ推進・ローカライズ</li></ul><p>■クロスボーダー案件のプロジェクトマネジメント</p><ul><li>地域内、地域間連携によるクロスセル推進などの仕組みづくりと実行支援</li><li>関係部署の調整・課題解決、案件の円滑な遂行支援</li></ul><p><strong>【将来的にお任せしたい業務】</strong><br>※ご志向とご経験により入社後すぐに担って頂く場合もあります。</p><p>■現地採用戦略の企画・実行サポートおよび組織設計</p><ul><li>APAC各拠点の採用計画策定・ポジション設計</li><li>現地採用プロセスへの参画、カントリーマネージャー・現地メンバーのオンボーディング支援</li><li>現地チームのマネジメント・育成支援（OKR設定、1on1、パフォーマンス管理）</li></ul><p>■M&A支援（専任チームとの連携）</p><ul><li>APACにおける買収・提携候補のソーシング・スクリーニング支援</li><li>M&Aエグゼキューション（DD、交渉、クロージング）のサポート</li><li>PMI（統合後管理）の企画・推進支援、シナジー創出に向けたオペレーション整備</li></ul><p>■その他、海外事業拡大に関連する業務全般</p><ul><li>各種市場調査・情報収集、社内展開資料の作成</li><li>グループ各拠点との連携強化、業務プロセス・仕組みの構築・改善</li></ul><p><strong>【やりがい】</strong></p><ul><li><strong>アジアNo.1のクライメートテック企業を自分の手で作る経験：</strong>日本国内で確立したNo.1ポジションをAPACへ横展開するフェーズの最前線に立ちます。「0→1」の拠点立ち上げから、既存拠点のグロースまで、グローバル事業の中核を担う役割です。</li><li><strong>経営判断に直結する仕事：</strong>事業計画・KPI・予実管理から経営レポーティングまで、自らのアウトプットが直接CEOや取締役会の意思決定に影響します。</li><li><strong>海外でのセールス・CS・M&A・採用まで横断的に関与できる唯一無二のポジション：</strong>一般的な事業開発職では関与が難しい、M&A・組織設計・採用戦略まで幅広く関与できます。</li><li><strong>将来の経営キャリアへのステップ：</strong>本ポジションはゴールではなく、APAC MD・子会社経営（M&Aへの出向含む）・役員候補といった将来の経営キャリアへの中継点として位置づけられています。</li></ul><p><strong>【必須スキル】</strong></p><ul><li><span class='tag tag-must'>MUST</span> 海外でのビジネス経験（駐在、出張ベースでの市場開拓、クロスボーダー案件の推進など）</li><li><span class='tag tag-must'>MUST</span> 事業計画策定・KPI管理・予実管理の実務経験</li><li><span class='tag tag-must'>MUST</span> 複数のステークホルダー（経営層・現場・海外拠点等）を巻き込み、プロジェクトを推進した経験</li><li><span class='tag tag-must'>MUST</span> ビジネスレベルの英語力（英語での会議・資料作成・交渉が可能なレベル）</li></ul><p><strong>【歓迎スキル】</strong></p><ul><li><span class='tag tag-want'>WANT</span> 総合商社、または事業会社にて海外事業開発・海外駐在を経験された方</li><li><span class='tag tag-want'>WANT</span> APAC市場（特にオーストラリア）での業務経験または深い知見</li><li><span class='tag tag-want'>WANT</span> SaaS・クラウドサービス・BtoBビジネスの事業開発・営業・CS経験</li><li><span class='tag tag-want'>WANT</span> サステナビリティ・脱炭素・ESG領域への理解・関心</li><li><span class='tag tag-want'>WANT</span> 現地法人の立ち上げ経験、PL責任を持った事業運営経験</li><li><span class='tag tag-want'>WANT</span> 現地採用・組織設計・チームマネジメントの経験（海外チームであれば尚可）</li><li><span class='tag tag-want'>WANT</span> スタートアップまたは成長企業での経験</li></ul><p><strong>【求める人物像】</strong></p><ul><li>アスエネのMVV（ミッション・ビジョン・バリュー）に共感できる方</li><li>目的志向・アウトプットドリブン：仮説→検証→実装を素早く回せる方</li><li>不確実性の高い環境下でも、自ら課題を設定し動ける方</li><li>高いオーナーシップと誠実さ、現場に深く入り込めるハンズオン姿勢のある方</li><li>文化・言語・タイムゾーンを越えて信頼関係を構築できるコミュニケーション力</li><li>チームワークを大切にし、チームで目標を達成することを重視する方</li></ul><p><strong>【働き方】</strong><br>週1日の在宅勤務が可能で、ご家庭事情により週2〜3日在宅へ変更することもご相談いただけます。部門横断での連携や意思決定のスピードを重視しており、対面でのコミュニケーションを大切にしながら、資料作成や企画業務などは在宅で効率よく進められる「ハイブリッドな働き方」を採用しています。また、小学校3年生までのお子様がいる方には、時差出勤・中抜け・在宅勤務など、個々の状況に合わせた柔軟な働き方を個別に調整しています。</p><p><strong>【給与】</strong>年収 10,000,000円 - 20,000,000円<br>経験・能力を考慮し、当社規定のグレードごとの給与レンジに応じて決定。給与改定は原則年2回。</p><p><strong>【勤務地】</strong>東京都港区虎ノ門一丁目3番1号 東京虎ノ門グローバルスクエア6階<br>まずは日本の東京ベースで勤務となります。入社から1年を目処にオーストラリア等のAPAC地域への駐在の可能性があります。</p><p><strong>【勤務時間】</strong>09:00-18:00（実働8時間：休憩1時間）／時間外労働有り／みなし残業（45時間）</p><p><strong>【休日・休暇】</strong>完全週休2日制（土日）、国民の祝日、年末年始（12月29日-1月3日）、有給休暇初年度10日付与、産前産後休暇、育児休暇、介護休暇、慶弔休暇</p><p><strong>【福利厚生】</strong></p><ul><li>健康保険、厚生年金保険、雇用保険、労災保険</li><li>ジムサポート制度</li><li>英会話補助</li><li>育児代行補助</li><li>朝食補助</li><li>企業型DC（企業型確定拠出年金）※一部グループ会社は対象外</li><li>従業員持株会制度 ※一部グループ会社は対象外</li><li>健康診断全額支給</li><li>婦人科検診補助</li><li>インフルエンザ予防接種補助</li><li>Happy Hour（全社懇親会）</li><li>シャッフルランチ</li><li>フリードリンク</li><li>服装自由</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京（虎ノ門）</span><span class="pill">🌏 APAC駐在可能性あり（1年後目処）</span><span class="pill">🏠 ハイブリッド勤務（週1日在宅〜）</span><span class="pill">💰 年収1,000万〜2,000万円</span></div>
+      </div>
+    </div>
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 【CEO直下】経営企画マネージャー</div>
+          <div class="job-preview">CEO直下で事業計画・KPI管理・資本戦略・M&A・ファンドレイズまで一気通貫に関与する経営企画ポジション。グローバル成長フェーズでアスエネの意思決定中枢を担う。</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>【募集背景】</strong><br>事業・組織・グローバル展開の急拡大に伴い、CEO直下で様々なプロジェクトの企画・推進を担える経営企画人材を募集します。現在、コーポレート部門の経営企画はCFOおよび既存マネージャーが中心となって推進していますが、新たにCEO直下の専任での経営企画としてアスエネグループ全体を横断してリードできる方が必要な状態です。</p><p><strong>【アスエネの強み（優位性）】</strong></p><ul><li><strong>ワンストップソリューション：</strong>CO2排出量の可視化・算定から、具体的な削減ソリューションの提案（カーボンオフセット、再エネ電力調達）、ESG評価サービス、カーボンクレジット取引所の運営までを一気通貫で提供中。</li><li><strong>国内トップクラスの導入実績と信頼性：</strong>「アスエネ」シリーズは累計導入社数３万社以上で国内No.1の実績を持ち（2025年10月時点）、環境省の「環境スタートアップ大臣賞」受賞歴や、伊藤園、ダイキン工業などの大手企業との取引や資本提携の実績有り。</li><li><strong>国内外の複雑な規制への対応：</strong>CDP、SBTi、CSRD、TCFD、TNFDなど、国内外の多様なサステナビリティ開示規制やイニシアチブに対応した高度なコンサルティングを提供中。特にCDPの日本唯一のスコアリングパートナーである点は大きな強み。</li><li><strong>テクノロジー活用による効率化：</strong>AIを活用したCO2排出量算定の自動化など、テクノロジーを駆使することで業務工数を削減し、効率的な運用を可能に。</li><li><strong>サプライチェーン全体の管理支援：</strong>自社だけでなく、サプライチェーン全体のESG評価やCO2削減を支援するクラウドサービス「アスエネサプライチェーン」を提供し、サプライヤーの一元管理を実現。</li></ul><p><strong>【組織構成】</strong><br>レポートライン：CEO直下<br>連携部署：CEO／CFO／事業責任者／M&A専任チーム／海外拠点</p><p><strong>【本ポジションについて】</strong><br>CEO西和田とともにアスエネグループ全体の成長を牽引することをミッションとし、会社全体の成長戦略の立案・実行から、社内横断プロジェクトの立案・実行など広く活躍いただくポジションです。事業計画・KPI設計・取締役会運営といった経営管理業務に留まらず、資金調達、資本業務提携、M&Aなど、会社の成長構造そのものを形作る領域に深く関与いただきます。</p><p><strong>【入社後すぐに担う業務】</strong></p><p>■事業計画策定・予算／中期計画</p><ul><li>年度／四半期の事業計画策定（Top-down × Bottom-up）</li><li>KPI設計、ドライバー設計、感応度分析・シナリオプランニング</li><li>予算編成〜ローリングフォーキャスト</li><li>KPIとPL／CFのブリッジ、着地見込み精度の管理</li></ul><p>■経営可視化・会議体運営</p><ul><li>週次KPIダッシュボードの設計・集計・定義管理</li><li>役員会／部門長MTG資料の作成、アジェンダ設計</li><li>月次／四半期レビュー（予実・KPIギャップ分析、改善アクション管理）</li></ul><p>■資本業務提携・事業パートナーシップ</p><ul><li>経営直下の戦略提携案件・出資案件等の推進（選任パートナーチームは別途あります）</li><li>LOI／MOU策定支援、初期交渉、シナジー検証</li><li>実行後のガバナンス・モニタリング設計</li></ul><p>■その他、CEO直下プロジェクト</p><p><strong>【将来的にお任せしたい業務】</strong><br>※ご志向とご経験により入社後すぐに担って頂く場合もあります。</p><p>■投資家対応・戦略資料</p><ul><li>Equity Story、Factbook、定期アップデート資料の作成・刷新（英語含む）</li><li>市場・競合・財務リサーチ、簡易バリュエーション（DCF／マルチプル）</li></ul><p>■ファンドレイズ（Equity／Debt）</p><ul><li>投資家ソーシング、面談設定、Q&A／DD対応</li><li>データルーム運用（海外投資家対応含む）</li><li>Term Sheet／投資契約のドラフトレビュー（アドバイザー・弁護士連携）</li></ul><p>■M&A（サブ担当）</p><ul><li>専任M&Aチームと連携した案件初期フェーズ支援</li><li>経営直下の戦略提携案件の推進を入り口に案件によってはM&Aへ展開</li><li>市場マッピング、シナジー試算、経営会議体への論点整理</li></ul><p>■横断PMO / 仕組み化</p><ul><li>OKR/KPI運用の定着、全社プロジェクトの計画・実行・モニタリング</li><li>テンプレート/チェックリスト整備、データ/資料の標準化</li></ul><p><strong>【やりがい】</strong></p><ul><li><strong>国内で確立した事業基盤をもとに、非連続成長を描くフェーズ：</strong>アスエネは日本国内では脱炭素SaaS領域でディファクトスタンダードを確立し、グローバルでも2〜3位のポジションにいます。「0→1」ではなく、国内で築いた事業基盤を前提に、海外・M&A・新規事業によってスケールを加速させる局面にあり、経営企画として最も難易度が高く、同時に面白さの大きいフェーズに関われます。</li><li><strong>経営判断の中枢に立ち、資本戦略・M&Aまで一気通貫で関与できる：</strong>KPI集計や資料作成に留まらず、事業計画、資本戦略、投資家対応、資本業務提携、M&Aといった経営の意思決定そのものに深く関与します。また、M&Aや資本業務提携についても、戦略立案から交渉、実行後のガバナンス設計まで関与でき、経営の手段としてのM&Aを一連で経験できます。</li><li><strong>グローバル前提の経営企画に挑戦できる：</strong>将来的に売上の半分以上を海外が占める構想のもと、北米・UK/EU・APACを中心に事業展開を進めています。海外投資家対応や海外パートナーとの協業、グローバル拠点・グループ会社を含めた経営管理など、日本にいながらグローバル経営の実務経験を積める環境があります。</li><li><strong>仕組みを作り、会社を「次の段階」へ引き上げられる：</strong>事業・組織の拡大により、経営管理・コーポレートには、より高度で再現性のある仕組みが求められるフェーズに入っています。本ポジションはゴールではなく、グループ内事業のGM、M&A後の子会社経営、役員候補といった将来の経営キャリアにつながる中継点として位置づけられています。</li></ul><p><strong>【必須スキル】</strong></p><ul><li><span class='tag tag-must'>MUST</span> 戦略／業務コンサル、投資銀行、商社、または事業会社における経営企画・事業企画・Corp Dev等の実務経験（3年以上）</li><li><span class='tag tag-must'>MUST</span> 経営管理・ファイナンススキル</li><li><span class='tag tag-must'>MUST</span> KPI設計・管理、財務モデリング、ロジカルな資料作成の実務経験</li></ul><p><strong>【歓迎スキル】</strong></p><ul><li><span class='tag tag-want'>WANT</span> ビジネスレベルの英語力（海外投資家・海外パートナーとの会議／資料対応が可能なレベル）</li><li><span class='tag tag-want'>WANT</span> M&A／ファンドレイズ関連業務への関与経験（財務DD、投資家対応、資料作成、交渉支援など）</li><li><span class='tag tag-want'>WANT</span> 資本業務提携の実務（少数出資/JV/共同販路等）または大企業とのストラテジックアカウント経験</li><li><span class='tag tag-want'>WANT</span> BI/データ基盤の知見（Looker/Tableau/BigQuery/簡易SQL）、KPI辞書の整備経験</li><li><span class='tag tag-want'>WANT</span> 会計/法務/ガバナンスの基礎（会社法/金商法/CGコード）</li><li><span class='tag tag-want'>WANT</span> 対象業界の理解（例：環境・エネルギー・製造業・SaaS）</li></ul><p><strong>【求める人物像】</strong></p><ul><li>アスエネのMVVに共感できる方</li><li>目的志向・アウトプットドリブン：仮説→検証→実装を素早く回せる</li><li>未整備領域を仕組み化し、継続改善できる</li><li>高いオーナーシップと誠実さ、現場に深く入り込むハンズオン姿勢</li></ul><p><strong>【働き方】</strong><br>週1日の在宅勤務が可能で、ご家庭事情により週2〜3日在宅へ変更することもご相談いただけます。部門横断での連携や意思決定のスピードを重視しており、対面でのコミュニケーションを大切にしながら、資料作成や企画業務などは在宅で効率よく進められる「ハイブリッドな働き方」を採用しています。また、小学校3年生までのお子様がいる方には、時差出勤・中抜け・在宅勤務など、個々の状況に合わせた柔軟な働き方を個別に調整しています。</p><p><strong>【給与】</strong>年収 9,000,000円 - 15,000,000円<br>経験・能力を考慮し、当社規定のグレードごとの給与レンジに応じて決定。給与改定は原則年2回。</p><p><strong>【勤務地】</strong>東京都港区虎ノ門一丁目3番1号 東京虎ノ門グローバルスクエア6階（東京拠点・ハイブリッド応相談）</p><p><strong>【勤務時間】</strong>09:00-18:00（実働8時間：休憩1時間）／時間外労働有り／みなし残業（45時間）</p><p><strong>【雇用形態】</strong>正社員</p><p><strong>【休日・休暇】</strong>完全週休2日制（土日）、国民の祝日、年末年始（12月29日-1月3日）、有給休暇初年度10日付与、産前産後休暇、育児休暇、介護休暇、慶弔休暇</p><p><strong>【福利厚生】</strong></p><ul><li>健康保険、厚生年金保険、雇用保険、労災保険</li><li>ジムサポート制度</li><li>英会話補助</li><li>育児代行補助</li><li>朝食補助</li><li>企業型DC（企業型確定拠出年金）※一部グループ会社は対象外</li><li>従業員持株会制度 ※一部グループ会社は対象外</li><li>健康診断全額支給</li><li>婦人科検診補助</li><li>インフルエンザ予防接種補助</li><li>Happy Hour（全社懇親会）</li><li>シャッフルランチ</li><li>フリードリンク</li><li>服装自由</li></ul><p><strong>【応募時提出書類】</strong></p><ul><li>履歴書・職務経歴書（日本語必須、英語任意）</li><li>資料サンプルやモデル（任意）</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京（虎ノ門）</span><span class="pill">🏠 ハイブリッド勤務（週1日在宅〜）</span><span class="pill">💰 年収900万〜1,500万円</span><span class="pill">👤 CEO直下</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://corp.asuene.com/company" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://prtimes.jp/main/html/rd/p/000000598.000058538.html" target="_blank">📰 資金調達プレスリリース</a></div>
+</div></div>
+</main>
+<footer>
+  <p>本資料はmorichが李 英愛 様のためにご用意した個人情報を含む機密資料です。無断転用・転載はご遠慮ください。</p>
+  <p style="margin-top:6px;">© 株式会社morich</p>
+</footer>
+<script>
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+  function toggleJob(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
